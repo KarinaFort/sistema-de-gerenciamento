@@ -40,15 +40,15 @@
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.cbCargo = new System.Windows.Forms.ComboBox();
-            this.imgPerfil = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnFoto = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
+            this.imgPerfil = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,14 +144,6 @@
             this.cbCargo.Size = new System.Drawing.Size(151, 21);
             this.cbCargo.TabIndex = 10;
             // 
-            // imgPerfil
-            // 
-            this.imgPerfil.Location = new System.Drawing.Point(617, 27);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(125, 140);
-            this.imgPerfil.TabIndex = 11;
-            this.imgPerfil.TabStop = false;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -202,13 +194,23 @@
             // 
             // btnFoto
             // 
-            this.btnFoto.Location = new System.Drawing.Point(568, 81);
+            this.btnFoto.Location = new System.Drawing.Point(632, 172);
             this.btnFoto.Name = "btnFoto";
-            this.btnFoto.Size = new System.Drawing.Size(42, 21);
+            this.btnFoto.Size = new System.Drawing.Size(99, 21);
             this.btnFoto.TabIndex = 17;
-            this.btnFoto.Text = "button1";
+            this.btnFoto.Text = "Carregar foto";
             this.btnFoto.UseVisualStyleBackColor = true;
             this.btnFoto.Click += new System.EventHandler(this.btnFoto_Click);
+            // 
+            // imgPerfil
+            // 
+            this.imgPerfil.Image = global::SDC_PDV.Properties.Resources.icons8_picture_480px_1;
+            this.imgPerfil.Location = new System.Drawing.Point(617, 27);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(125, 140);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 11;
+            this.imgPerfil.TabStop = false;
             // 
             // frmFuncionarios
             // 
@@ -240,8 +242,8 @@
             this.Name = "frmFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro";
-            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

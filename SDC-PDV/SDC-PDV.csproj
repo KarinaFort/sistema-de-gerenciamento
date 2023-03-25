@@ -103,5 +103,8 @@
   <ItemGroup>
     <None Include="img\icons8_invoice_64px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\icons8_picture_480px_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

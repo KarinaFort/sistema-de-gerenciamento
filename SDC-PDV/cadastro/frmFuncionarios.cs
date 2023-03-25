@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -38,7 +39,7 @@ namespace SDC_PDV.cadastro
             cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
             cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
             cmd.Parameters.AddWithValue("@cargo", cbCargo.Text);
-           // cmd.Parameters.AddWithValue("@foto", img()); //metodo para tratar imagem no BD
+            cmd.Parameters.AddWithValue("@foto", img()); //metodo para tratar imagem no BD
 
             cmd.ExecuteNonQuery();
             con.FecharConexao();
@@ -53,8 +54,29 @@ namespace SDC_PDV.cadastro
             {
                 foto = dialog.FileName.ToString();//pega o caminho da imagem selecionada 
                 imgPerfil.ImageLocation = foto; //joga caminho da imagem p/ imgPerfil p/ exibir no form
-               // alterouImagem = "sim";//editar imagem
+                //alterouImagem = "sim";//editar imagem
             }
+        }
+
+        private byte[] img()//metodo para enviar foto ao BD
+        {
+            byte[] imagem_byte = null;//variavel para enviar o comprimento da imagem
+            if(foto =="")
+            {
+                return null;
+            }
+
+            //filestream p/ enviar imagem e 3 parametros local(foto), tipo de imagem(FileMode) e tipo de acesso(FileAccess)
+            FileStream fs = new FileStream(foto, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);//lidar com FileStream
+
+            imagem_byte = br.ReadBytes((int)fs.Length);//pega o comprimento da imagem e joga p/ tipo IMAGEM BYTE
+            return imagem_byte;
+        }
+        private void LimparFoto()
+        {
+            imgPerfil.Image = Properties.Resources.icons8_picture_480px_1;//coloca a imagem que indica sem foto
+            foto = "img/icons8_picture_480px_1.png";
         }
     }
 }
