@@ -1,0 +1,17 @@
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\SDC-PDV.exe.config
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\SDC-PDV.exe
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\SDC-PDV.pdb
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.csproj.AssemblyReference.cache
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.csproj.SuggestedBindingRedirects.cache
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC_PDV.FormPrincipal.resources
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC_PDV.Properties.Resources.resources
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.csproj.GenerateResource.cache
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.csproj.CoreCompileInputs.cache
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.exe
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.pdb
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC_PDV.cadastro.frmFuncionarios.resources
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\MySql.Data.dll
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\Google.Protobuf.dll
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\bin\Debug\MySql.Data.xml
+C:\Users\Karina Forte\Desktop\CSharp\SDC-PDV\obj\Debug\SDC-PDV.csproj.CopyComplete
