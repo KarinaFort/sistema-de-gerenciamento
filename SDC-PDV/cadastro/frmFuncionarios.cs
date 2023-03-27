@@ -27,18 +27,33 @@ namespace SDC_PDV.cadastro
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //MySQL
-        
+            //Tratar dados 
+            
+            if (txtNome.Text.ToString().Trim() =="")//Corrige preenchimnento de nome e não permite que seja vazio
+            {
+                MessageBox.Show("Preencha o campo nome", "Cadastro de funcionários", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNome.Text = "";
+                txtNome.Focus();
+                return;
+            }
+
+            if (txtCpf.Text == "   .   .   -  " || txtCpf.Text.Length < 14)
+            {
+                MessageBox.Show("Preencha o campo CPF", "Cadastro de funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCpf.Focus();
+                return;
+            }
+
             con.AbrirConexao();
             sql = "INSERT INTO funcionarios(nome, cpf, celular, endereco, cargo, data, foto) VALUES(@nome, @cpf, @celular, @endereco, @cargo, curDate(), @foto)";
 
             cmd = new MySqlCommand(sql, con.con);
 
-            cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);
-            cmd.Parameters.AddWithValue("@celular", txtCelular.Text);
-            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);
-            cmd.Parameters.AddWithValue("@cargo", cbCargo.Text);
+            cmd.Parameters.AddWithValue("@nome", txtNome.Text);//Tratamento caixa alta da caixa de nome AAAA
+            cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);//Mascara 000.000.000-00
+            cmd.Parameters.AddWithValue("@celular", txtCelular.Text);//(00) 00 00000-0000
+            cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text);//BD
+            cmd.Parameters.AddWithValue("@cargo", cbCargo.Text);//BD
             cmd.Parameters.AddWithValue("@foto", img()); //metodo para tratar imagem no BD
 
             cmd.ExecuteNonQuery();
@@ -55,6 +70,9 @@ namespace SDC_PDV.cadastro
                 foto = dialog.FileName.ToString();//pega o caminho da imagem selecionada 
                 imgPerfil.ImageLocation = foto; //joga caminho da imagem p/ imgPerfil p/ exibir no form
                 //alterouImagem = "sim";//editar imagem
+            }else
+            {
+                LimparFoto();
             }
         }
 
