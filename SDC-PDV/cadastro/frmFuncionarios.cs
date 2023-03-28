@@ -25,6 +25,36 @@ namespace SDC_PDV.cadastro
             InitializeComponent();
         }
 
+        private void FormatarGrid()
+        {
+            grid.Columns[0].HeaderText = "ID";
+            grid.Columns[1].HeaderText = "Nome";
+            grid.Columns[2].HeaderText = "CPF";
+            grid.Columns[3].HeaderText = "Celular";
+            grid.Columns[4].HeaderText = "Endereço";
+            grid.Columns[5].HeaderText = "Cargo";
+            grid.Columns[6].HeaderText = "Data";
+            grid.Columns[7].HeaderText = "Foto";
+
+            grid.Columns[0].Width = 50;
+            grid.Columns[6].Width = 110;
+            grid.Columns[0].Visible = false;
+            grid.Columns[7].Visible = true;
+
+        }
+
+        private void frmFuncionarios_Load(object sender, EventArgs e)
+        {
+            LimparFoto();
+            Listar();
+            FormatarGrid();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            HabilitarCampo();
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             //Tratar dados 
@@ -37,7 +67,7 @@ namespace SDC_PDV.cadastro
                 return;
             }
 
-            if (txtCpf.Text == "   .   .   -  " || txtCpf.Text.Length < 14)
+            if (txtCpf.Text == "   ,   ,   - " || txtCpf.Text.Length < 14)
             {
                 MessageBox.Show("Preencha o campo CPF", "Cadastro de funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCpf.Focus();
@@ -47,7 +77,7 @@ namespace SDC_PDV.cadastro
             con.AbrirConexao();
             sql = "INSERT INTO funcionarios(nome, cpf, celular, endereco, cargo, data, foto) VALUES(@nome, @cpf, @celular, @endereco, @cargo, curDate(), @foto)";
 
-            cmd = new MySqlCommand(sql, con.con);
+            cmd = new MySqlCommand(cmdText: sql, con.con);
 
             cmd.Parameters.AddWithValue("@nome", txtNome.Text);//Tratamento caixa alta da caixa de nome AAAA
             cmd.Parameters.AddWithValue("@cpf", txtCpf.Text);//Mascara 000.000.000-00
@@ -58,6 +88,21 @@ namespace SDC_PDV.cadastro
 
             cmd.ExecuteNonQuery();
             con.FecharConexao();
+
+            LimparFoto();
+            
+
+            MessageBox.Show("Registro salvo com sucesso!", "Cadastro de funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            btnNovo.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
+            btnFoto.Enabled = false;
+
+           
+            LimparCampos();
+            DesabilitarCampos();
         }
        
 
@@ -70,9 +115,6 @@ namespace SDC_PDV.cadastro
                 foto = dialog.FileName.ToString();//pega o caminho da imagem selecionada 
                 imgPerfil.ImageLocation = foto; //joga caminho da imagem p/ imgPerfil p/ exibir no form
                 //alterouImagem = "sim";//editar imagem
-            }else
-            {
-                LimparFoto();
             }
         }
 
@@ -96,5 +138,55 @@ namespace SDC_PDV.cadastro
             imgPerfil.Image = Properties.Resources.icons8_picture_480px_1;//coloca a imagem que indica sem foto
             foto = "img/icons8_picture_480px_1.png";
         }
+
+        
+
+        private void HabilitarCampo()
+        {
+            
+            btnSalvar.Enabled = true;
+            txtNome.Enabled = true;
+            txtCpf.Enabled = true;
+            txtCelular.Enabled = true;
+            txtEndereco.Enabled = true;
+            cbCargo.Enabled = true;
+            btnFoto.Enabled = true;
+            btnNovo.Enabled = false;
+
+        }
+
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtCpf.Text = "";
+            txtCelular.Text = "";
+            txtEndereco.Text = "";
+        }
+
+        private void DesabilitarCampos()
+        {
+            btnSalvar.Enabled = false;
+            txtNome.Enabled = false;
+            txtCpf.Enabled = false;
+            txtCelular.Enabled = false;
+            txtEndereco.Enabled = false;
+            cbCargo.Enabled = false;
+            btnFoto.Enabled = false;
+            btnNovo.Enabled = true;
+        }
+
+        private void Listar()
+        {
+            con.AbrirConexao();
+            sql = "SELECT * FROM funcionarios ORDER BY nome asc";
+            cmd = new MySqlCommand(sql, con.con);
+            MySqlDataAdapter da = new MySqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            grid.DataSource = dt;
+            con.FecharConexao();
+        }
+        
     }
 }
