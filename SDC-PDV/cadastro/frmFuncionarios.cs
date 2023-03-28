@@ -53,6 +53,8 @@ namespace SDC_PDV.cadastro
         private void btnNovo_Click(object sender, EventArgs e)
         {
             HabilitarCampo();
+            LimparCampos();
+            txtNome.Focus();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -102,6 +104,7 @@ namespace SDC_PDV.cadastro
 
            
             LimparCampos();
+            Listar();
             DesabilitarCampos();
         }
        
@@ -187,6 +190,53 @@ namespace SDC_PDV.cadastro
             grid.DataSource = dt;
             con.FecharConexao();
         }
-        
+
+        //Subindo informaçoes do BD para editar
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                HabilitarCampo();
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+                btnSalvar.Enabled = false;
+                btnNovo.Enabled = false;
+
+                txtNome.Text = grid.CurrentRow.Cells[1].Value.ToString();
+                txtCpf.Text = grid.CurrentRow.Cells[2].Value.ToString();
+                txtCelular.Text = grid.CurrentRow.Cells[3].Value.ToString();
+                txtEndereco.Text = grid.CurrentRow.Cells[4].Value.ToString();
+                cbCargo.Text = grid.CurrentRow.Cells[5].Value.ToString();
+
+                if(grid.CurrentRow.Cells[7].Value != DBNull.Value)//Verifica informação do banco de dados
+                {
+                    byte[] imagem = (byte[])grid.Rows[e.RowIndex].Cells[7].Value;//variavel byte[] criada p/ receber o que vem da grid em bytes
+                    MemoryStream ms = new MemoryStream(imagem);//recebe a variavel ja com o valor da grid convertido 
+
+                    imgPerfil.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    imgPerfil.Image = Properties.Resources.icons8_picture_480px_1;//coloca a imagem que indica sem foto
+                }
+            }
+            else
+            {
+                return;
+            }
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            btnNovo.Enabled = true;
+            btnEditar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnSalvar.Enabled = false;
+            DesabilitarCampos();
+            LimparCampos();
+            
+
+        }
     }
 }

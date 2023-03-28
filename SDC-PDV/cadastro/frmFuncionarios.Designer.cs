@@ -112,7 +112,7 @@
             this.txtEndereco.Location = new System.Drawing.Point(110, 126);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(440, 20);
-            this.txtEndereco.TabIndex = 8;
+            this.txtEndereco.TabIndex = 4;
             // 
             // txtNome
             // 
@@ -120,7 +120,7 @@
             this.txtNome.Location = new System.Drawing.Point(110, 27);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(440, 20);
-            this.txtNome.TabIndex = 9;
+            this.txtNome.TabIndex = 1;
             // 
             // cbCargo
             // 
@@ -132,7 +132,7 @@
             this.cbCargo.Location = new System.Drawing.Point(110, 173);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(151, 21);
-            this.cbCargo.TabIndex = 10;
+            this.cbCargo.TabIndex = 5;
             // 
             // grid
             // 
@@ -144,6 +144,7 @@
             this.grid.ReadOnly = true;
             this.grid.Size = new System.Drawing.Size(742, 169);
             this.grid.TabIndex = 12;
+            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             // 
             // btnNovo
             // 
@@ -181,7 +182,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(536, 406);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 16;
+            this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -192,7 +193,7 @@
             this.btnFoto.Location = new System.Drawing.Point(632, 172);
             this.btnFoto.Name = "btnFoto";
             this.btnFoto.Size = new System.Drawing.Size(99, 21);
-            this.btnFoto.TabIndex = 17;
+            this.btnFoto.TabIndex = 6;
             this.btnFoto.Text = "Carregar foto";
             this.btnFoto.UseVisualStyleBackColor = true;
             this.btnFoto.Click += new System.EventHandler(this.btnFoto_Click);
@@ -214,7 +215,7 @@
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(138, 20);
-            this.txtCpf.TabIndex = 18;
+            this.txtCpf.TabIndex = 2;
             // 
             // txtCelular
             // 
@@ -223,16 +224,17 @@
             this.txtCelular.Mask = "(00) 00000-0000";
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(129, 20);
-            this.txtCelular.TabIndex = 19;
+            this.txtCelular.TabIndex = 3;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(698, 406);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmFuncionarios
             // 
